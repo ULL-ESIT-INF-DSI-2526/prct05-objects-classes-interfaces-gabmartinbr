@@ -1,5 +1,10 @@
 import { ElementoBibliografico } from "./ElementoBibliografico";
 
+/**
+ * clase que representa objeto articulo de revista con el metodo toIEEE con el correspondiente
+ * formato requerido para este tipo de elemento bibliografico, añadiendo a la clase abstracta los 
+ * atributos nombre de revista, volumen de revista y numero de revista
+ */
 export class ArticuloRevista extends ElementoBibliografico {
   constructor(
     // atributos clase padre
@@ -41,7 +46,8 @@ export class ArticuloRevista extends ElementoBibliografico {
    *
    * Ejemplo de IEEE revista:
    * J. Pérez y M. García, "Avances en el procesamiento de lenguaje natural," Revista de Inteligencia Artificial Aplicada, vol. 12, no. 3, pp. 45-52, Mar. 2024.
-   */
+   * @returns string de revista en formato ieee
+  */
   toIEEE(): string {
     const autoresClean = this.autores.join(", ");
     const month = this.fechaPublicacion.toLocaleString("en-US", {
