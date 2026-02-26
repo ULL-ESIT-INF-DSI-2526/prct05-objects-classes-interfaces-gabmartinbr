@@ -69,7 +69,7 @@ export class ArticuloRevista extends ElementoBibliografico {
     result += paginasClean + ", "
 
     // 7. fecha
-    let month = this.fechaPublicacion.toLocaleString('en-EN', { month: 'short' })
+    let month = this.fechaPublicacion.toLocaleString('en-US', { month: 'short' })
     let year = this.fechaPublicacion.getFullYear()
     let fechaClean: string = `${month}. ${year}`
     result += fechaClean + "."
