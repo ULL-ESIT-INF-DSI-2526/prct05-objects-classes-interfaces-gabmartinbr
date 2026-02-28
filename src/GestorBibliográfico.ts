@@ -57,11 +57,11 @@ export class GestorBibliografico {
   }
 
   // buscar por fecha
-  searchByDate(year: number): ElementoBibliografico[] {
-    return this._inventario.filter(
-      (element) => element.fechaPublicacion.getFullYear() === year,
-    );
-  }
+  // searchByDate(year: number): ElementoBibliografico[] {
+  //   return this._inventario.filter(
+  //     (element) => element.fechaPublicacion.getFullYear() === year,
+  //   );
+  // }
 
   // buscar por editorial
   searchByEditorial(editorial: string): ElementoBibliografico[] {

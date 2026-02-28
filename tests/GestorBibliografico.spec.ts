@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { GestorBibliografico } from "../src/GestorBibliográfico";
 import { CapituloLibro } from "../src/CapituloLibro";
 import { ArticuloRevista } from "../src/ArticuloRevista";
@@ -167,9 +167,9 @@ describe("GestorBibliografico - Pruebas de Integración", () => {
     expect(true).toBe(true);
   });
 
-  it("debería buscar por fecha para cubrir ese método", () => {
-    const resultados = gestor.searchByDate(2024);
-    // Simplemente ejecutamos la búsqueda para que el filtro cuente en el coverage
-    expect(Array.isArray(resultados)).toBe(true);
-  });
+  // it("debería buscar por fecha para cubrir ese método", () => {
+  //   const resultados = gestor.searchByDate(2024);
+  //   // Simplemente ejecutamos la búsqueda para que el filtro cuente en el coverage
+  //   expect(Array.isArray(resultados)).toBe(true);
+  // });
 });
