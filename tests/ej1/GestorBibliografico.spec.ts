@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { GestorBibliografico } from "../src/GestorBibliográfico";
-import { CapituloLibro } from "../src/CapituloLibro";
-import { ArticuloRevista } from "../src/ArticuloRevista";
+import { GestorBibliografico } from "../../src/ej1/GestorBibliográfico";
+import { CapituloLibro } from "../../src/ej1/CapituloLibro";
+import { ArticuloRevista } from "../../src/ej1/ArticuloRevista";
 
 describe("GestorBibliografico - Pruebas de Integración", () => {
   let gestor: GestorBibliografico;

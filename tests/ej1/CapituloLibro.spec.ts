@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CapituloLibro } from '../src/CapituloLibro';
+import { CapituloLibro } from '../../src/ej1/CapituloLibro';
 
 describe('Pruebas de Formato IEEE - Capítulo de Libro', () => {
   it('debería generar el string siguiendo el formato de capítulo de libro', () => {

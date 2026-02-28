@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ArticuloRevista } from "../src/ArticuloRevista";
+import { ArticuloRevista } from "../../src/ej1/ArticuloRevista";
 
 describe("Prueba de IEEE con articulo de revista", () => {
   it("prueba articulo revista 1", () => {
