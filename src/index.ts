@@ -1,12 +1,4 @@
-/**
- * 
- * @param a - d
- * @param b - ds
- * @returns s
- */
-export function suma(a:number,b:any):number{
-const resultado = a+b;
-return resultado
-}
+// import { CapituloLibro } from "./CapituloLibro";
+// import { ArticuloRevista } from "./ArticuloRevista";
+// import { GestorBibliografico } from "./GestorBibliografico";
 
-console.log(suma(1, 2));
