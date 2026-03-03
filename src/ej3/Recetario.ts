@@ -75,10 +75,10 @@ export class Receta {
   }
 
   public tiempoTotal(): string | number {
-    if (this.tiempoBase === this.tiempoOpcional) {
+    if (this.tiempoBase() === this.tiempoOpcional()) {
       return this.tiempoBase();
     } else {
-      return `${this.tiempoBase}-${this.tiempoOpcional}`;
+      return `${this.tiempoBase()}-${this.tiempoOpcional()}`;
     }
   }
 }
