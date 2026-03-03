@@ -84,3 +84,74 @@ class Deportivo extends Coche {
     console.log(`Este deportivo usa: ${this.tipo}`)
   }
 }
+
+
+// tests
+
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { GestorRecetas, Chef, Receta, Paso } from "../../src/ej3/Recetario";
+
+describe("Pruebas de Integración - GestorRecetas", () => {
+  let gestor: GestorRecetas;
+
+  // --- CONFIGURACIÓN Y LIMPIEZA ---
+  beforeEach(() => {
+    // 1. Creamos datos frescos para cada test
+    const paso = new Paso("Paso 1", "Desc", 10, ["tag1"], false);
+    const receta = new Receta("Tortilla", 2024, [paso]);
+    const chef = new Chef("Pepe", 100, [receta]);
+
+    gestor = new GestorRecetas([chef]);
+
+    // 2. IMPORTANTE: Limpiamos todos los espías y mocks anteriores
+    // Esto asegura que los contadores de llamadas vuelvan a 0
+    vi.restoreAllMocks(); 
+  });
+
+  // --- TEST DE CAMINO FELIZ (console.table) ---
+  it("debería mostrar una tabla cuando encuentra una receta", () => {
+    // Espiamos console.table y evitamos que imprima en la terminal real
+    const spyTable = vi.spyOn(console, "table").mockImplementation(() => {});
+
+    gestor.buscarReceta("Tortilla");
+
+    // Comprobamos que se llamó a la tabla
+    expect(spyTable).toHaveBeenCalledTimes(1);
+
+    // Recuperamos el primer argumento de la primera llamada: spyTable.mock.calls[vez][argumento]
+    const datosTabla = spyTable.mock.calls[0][0];
+
+    // Verificamos el contenido sin usar 'any'
+    expect(Array.isArray(datosTabla)).toBe(true);
+    if (Array.isArray(datosTabla)) {
+      expect(datosTabla[0]).toMatchObject({
+        Receta: "Tortilla",
+        Chef: "Pepe"
+      });
+    }
+  });
+
+  // --- TEST DE BORDE / ERROR (console.log) ---
+  it("debería mostrar un mensaje de error cuando NO encuentra nada", () => {
+    // Espiamos console.log
+    const spyLog = vi.spyOn(console, "log").mockImplementation(() => {});
+
+    // Buscamos algo que no existe (el famoso "Inexistente")
+    gestor.buscarReceta("Pizza de Piña");
+
+    // Verificamos que NO se llamó a la tabla, sino al log de error
+    expect(spyLog).toHaveBeenCalledWith(
+      expect.stringContaining("No se encontraron recetas")
+    );
+  });
+
+  // --- TEST DE COMPORTAMIENTO (vi.fn) ---
+  it("debería demostrar cómo funciona un mock de función simple", () => {
+    const miFuncionFalsa = vi.fn((x: number) => x * 2);
+
+    miFuncionFalsa(5);
+    
+    expect(miFuncionFalsa).toHaveBeenCalledWith(5);
+    expect(miFuncionFalsa).toHaveReturnedWith(10);
+  });
+});
