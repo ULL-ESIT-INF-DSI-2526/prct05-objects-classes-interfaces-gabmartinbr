@@ -86,6 +86,44 @@ class Deportivo extends Coche {
 }
 
 
+// regex
+
+comprobarDNI(dni: string): boolean {
+    const regex = new RegExp('[0-9]{8}[a-zA-Z]');
+    if (!regex.test(dni)) return false;
+    return true;
+  }
+
+  /**
+   * Comprueba si la nueva fecha tiene un formato válido
+   */
+  comprobarFecha(fecha: string): boolean {
+    const regex = new RegExp('[0-9]{2}-?[0-9]{2}-?[0-9]{4}');
+    if (!regex.test(fecha)) return false;
+    return true;
+  }
+
+  /**
+   * Comprueba si el nuevo correo tiene un formato válido
+   */
+  comprobarCorreo(correo: string): boolean {
+    const regex = new RegExp('[a-zA-Z0-9]+@[a-zA-Z0-9]+');
+    if (!regex.test(correo)) return false;
+    return true;
+  }
+
+
+  // ^[a-zA-Z] -> Empieza por letra
+// [^ ]* -> Seguido de cualquier cosa que NO sea un espacio
+// $         -> Hasta el final
+const regex = /^[a-zA-Z][^ ]*$/;
+
+console.log(regex.test("User123")); // true
+console.log(regex.test(" User123")); // false (empieza con espacio)
+console.log(regex.test("User 123")); // false (tiene espacio en medio)
+
+  
+
 // tests
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
